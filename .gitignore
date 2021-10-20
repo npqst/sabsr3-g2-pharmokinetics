@@ -132,4 +132,4 @@ dmypy.json
 .pyre/
 
 # vscode settings
-.vscode/
+.vscode*
