@@ -10,6 +10,6 @@ class SolutionTest(unittest.TestCase):
         """
         Tests Solution creation.
         """
-        model = pk.Solution()
+        model = pk.Solution([0, 0, 0])
         self.assertEqual(model.value, 44)
 
