@@ -6,15 +6,6 @@ import json
 import unittest
 from model import Model
 class Protocol():
-    """A Pharmokinetic (PK) protocol
-
-    Parameters
-    ----------
-
-    value: numeric, optional
-        an example paramter
-
-    """
     def __init__(self):
         self.params = {
                 'name': 'model1' 
