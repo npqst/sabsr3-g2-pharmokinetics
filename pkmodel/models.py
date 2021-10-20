@@ -9,8 +9,8 @@ class IntravenousModels(AbstractModel):
     def __init__(self, parameters):
         self.parameters = parameters
         self.CL = parameters['CL']
-        self.q_c = parameters['V_c']
-        self.q_p1 = parameters['V_p1']
+        self.V_c = parameters['V_c']
+        self.V_p1 = parameters['V_p1']
         self.Q_p1 = parameters['Q_p1']
         self.X = parameters['X']
         self.dose = parameters['dose']
@@ -37,8 +37,8 @@ class SubcutaneousModels(AbstractModel):
     def __init__(self, parameters):
         self.parameters = parameters
         self.CL = parameters['CL']
-        self.q_c = parameters['V_c']
-        self.q_p1 = parameters['V_p1']
+        self.V_c = parameters['V_c']
+        self.V_p1 = parameters['V_p1']
         self.Q_p1 = parameters['Q_p1']
         self.k_a = parameters['k_a']
         self.X = parameters['X']
