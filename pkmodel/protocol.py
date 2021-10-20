@@ -13,7 +13,6 @@ class Protocol:
 
     """
 
-
     def __init__(self, value=43):
         self.value = value
 
