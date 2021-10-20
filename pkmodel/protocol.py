@@ -5,7 +5,7 @@
 import json
 from .model import Model
 from AbstractProtocol import AbstractProtocol
-dfkjsdfkjsdf
+
 
 class Protocol(AbstractProtocol):
     """A Pharmokinetic (PK) protocol
