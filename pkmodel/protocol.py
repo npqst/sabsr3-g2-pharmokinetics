@@ -3,7 +3,7 @@
 #
 
 import json
-from models import Model
+from models import IntravenousModels
 from AbstractProtocol import AbstractProtocol
 
 
@@ -43,4 +43,4 @@ class Protocol(AbstractProtocol):
         return param_dicts
 
     def generate_model(param_dicts):
-        return Model(param_dicts)
+        return IntravenousModels(param_dicts)
