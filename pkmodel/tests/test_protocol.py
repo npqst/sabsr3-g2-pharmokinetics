@@ -10,18 +10,6 @@ class ProtocolTest(unittest.TestCase):
         """
         Tests Protocol creation.
         """
-        # protocol = pk.Protocol()
-        # params = {
-        #     'name': 'model1',
-        #     'Q_p1': 5.4,
-        #     'V_c': 5.4,
-        #     'V_p1': 5.3,
-        #     'CL': 4.5,
-        #     'X': 3.0,
-        # }
-        # test_parameters = protocol.fill_parameters(params)
-        # self.assertEqual(test_parameters, params)
-        test = 4
-        self.assertEqual(test, 4)
-
+        value = 4
+        assert value, 4
 
