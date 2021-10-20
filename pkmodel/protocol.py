@@ -17,7 +17,7 @@ class Protocol():
     """
     def __init__(self):
         self.params = {
-                'name': 'model1' 
+                'name': 'model1',
                 'Q_p1': 1.0,
                 'V_c': 1.0,
                 'V_p1': 1.0,
