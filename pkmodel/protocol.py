@@ -6,6 +6,7 @@ import json
 from pkmodel.models import IntravenousModels
 from pkmodel.AbstractProtocol import AbstractProtocol
 
+
 # TODO: move dose to appropriate location
 def dose(t, X):
     return X
