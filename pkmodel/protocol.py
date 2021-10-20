@@ -7,6 +7,11 @@ from pkmodel.models import IntravenousModels
 from pkmodel.AbstractProtocol import AbstractProtocol
 
 
+# TODO: move dose to appropriate location
+def dose(t, X):
+    return X
+
+
 class Protocol(AbstractProtocol):
     """A Pharmokinetic (PK) protocol
 
@@ -22,9 +27,11 @@ class Protocol(AbstractProtocol):
             'name': 'model1',
             'Q_p1': 1.0,
             'V_c': 1.0,
+
             'V_p1': 1.0,
             'CL': 1.0,
             'X': 1.0,
+            'dose': dose
         }
 
     def read_config(self, file_dir):
@@ -42,5 +49,5 @@ class Protocol(AbstractProtocol):
                 param_dicts[k] = self.params[k]
         return param_dicts
 
-    def generate_model(param_dicts):
-        return IntravenousModels(param_dicts)
+    def generate_model(self):
+        return IntravenousModels(self.params)
