@@ -6,7 +6,7 @@ Authors: SABS R3 Group 2
 """
 from abc import ABC, abstractmethod
 
-from AbstractModel import AbstractModel
+from .AbstractModel import AbstractModel
 
 
 class AbstractProtocol(ABC):
