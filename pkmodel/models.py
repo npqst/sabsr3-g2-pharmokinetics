@@ -46,7 +46,7 @@ class SubcutaneousModels(AbstractModel):
 
     def rhs(self, t, y):
         q_c, q_p1, q_0 = y
-        dq0_dt = self.dose(t, X) - self.k_a * q_0
+        dq0_dt = self.dose(t, self.X) - self.k_a * q_0
         transition = self.Q_p1 * (q_c / self.V_c - q_p1 / self.V_p1)
         dqc_dt = self.k_a * q_0 - q_c / self.V_c * self.CL - transition
         dqp1_dt = transition
