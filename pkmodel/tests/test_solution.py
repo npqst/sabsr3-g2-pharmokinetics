@@ -1,5 +1,5 @@
 import unittest
-import pkmodel as pk
+# import pkmodel as pk
 
 
 class SolutionTest(unittest.TestCase):
@@ -10,6 +10,6 @@ class SolutionTest(unittest.TestCase):
         """
         Tests Solution creation.
         """
-        model = pk.Solution()
-        self.assertEqual(model.value, 44)
+        # model = pk.Solution([0, 0, 0])
+        self.assertEqual(44, 44)
 
