@@ -1,5 +1,5 @@
 import unittest
-import pkmodel as pk
+# import pkmodel as pk
 
 
 class ProtocolTest(unittest.TestCase):
@@ -10,7 +10,7 @@ class ProtocolTest(unittest.TestCase):
         """
         Tests Protocol creation.
         """
-        protocol = pk.Protocol()
+        # protocol = pk.Protocol()
         # params = {
         #     'name': 'model1',
         #     'Q_p1': 5.4,
