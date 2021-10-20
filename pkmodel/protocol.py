@@ -3,8 +3,8 @@
 #
 
 import json
-from model import Model
-from AbstractProtocol import AbstractProtocol
+from pkmodel.models import IntravenousModels
+from pkmodel.AbstractProtocol import AbstractProtocol
 
 
 class Protocol(AbstractProtocol):
@@ -43,4 +43,4 @@ class Protocol(AbstractProtocol):
         return param_dicts
 
     def generate_model(param_dicts):
-        return Model(param_dicts)
+        return IntravenousModels(param_dicts)

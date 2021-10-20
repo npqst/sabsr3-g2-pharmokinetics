@@ -1,7 +1,7 @@
 import numpy as np
 import scipy.integrate
-from Solution import Solution
-from AbstractModel import AbstractModel
+from pkmodel.Solution import Solution
+from pkmodel.AbstractModel import AbstractModel
 
 
 class IntravenousModels(AbstractModel):
