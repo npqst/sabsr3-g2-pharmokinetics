@@ -1,9 +1,11 @@
 """
-AbstractSolution.py: Abstract class for solution of 1st Order Linear ODE for pharmokinetic model
+AbstractSolution.py: Abstract class for solution of 1st Order Linear ODE
+for pharmokinetic model
 Authors: SABS R3 Group 2
 20.10.2021
 """
 from abc import ABC, abstractmethod
+
 
 class AbstractSolution(ABC):
     @property
@@ -14,4 +16,3 @@ class AbstractSolution(ABC):
         :raises NotImplementedError: Must be implemented by subclass
         """
         raise NotImplementedError("Abstract method")
-        
