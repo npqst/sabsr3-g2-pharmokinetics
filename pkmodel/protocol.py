@@ -3,8 +3,8 @@
 #
 
 import json
-from .model import Model
-from .AbstractProtocol import AbstractProtocol
+from models import Model
+from AbstractProtocol import AbstractProtocol
 
 
 class Protocol(AbstractProtocol):
