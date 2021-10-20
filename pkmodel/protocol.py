@@ -3,7 +3,7 @@
 #
 
 import json
-from models import IntravenousModels
+from .models import IntravenousModels
 from AbstractProtocol import AbstractProtocol
 
 
