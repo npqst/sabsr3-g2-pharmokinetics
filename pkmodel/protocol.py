@@ -2,9 +2,9 @@
 # Protocol class
 #
 
-import json
-from pkmodel.models import IntravenousModels
-from pkmodel.AbstractProtocol import AbstractProtocol
+import ast
+from .models import IntravenousModels
+from .AbstractProtocol import AbstractProtocol
 
 
 # TODO: move dose to appropriate location
@@ -22,7 +22,7 @@ class Protocol(AbstractProtocol):
         an example paramter
 
     """
-    def __init__(self):
+    def __init__(self, file_dir=None):
         self.params = {
             'name': 'model1',
             'Q_p1': 1.0,
@@ -33,21 +33,26 @@ class Protocol(AbstractProtocol):
             'X': 1.0,
             'dose': dose
         }
+        if file_dir:
+            self.fill_parameters(file_dir)
 
     def read_config(self, file_dir):
         #get current directory and add to file_dir
-        config_file = open("file_dir", "r")
-        dictionaries_list_str = config_file  # .split(",")
+        config_file = open(file_dir, "r")
+        config_file_str = config_file.read()
+        config_file.close()
+        dictionaries_list_str = config_file_str  # .split(",")
         # <-- for splitting up multipl dictionaries in the future
         # dictionaries_list = [json.loads(d) for d in dictionaries_list_str]
-        dictionaries_list = json.loads(dictionaries_list_str)
+        dictionaries_list = ast.literal_eval(str(dictionaries_list_str))
         return dictionaries_list
 
-    def fill_parameters(self, param_dicts):
-        for k in self.params.keys:
+    def fill_parameters(self, file_dir):
+        param_dicts = self.read_config(file_dir)
+        for k in self.params.keys():
             if k not in param_dicts:
                 param_dicts[k] = self.params[k]
-        return param_dicts
+        self.params = param_dicts
 
     def generate_model(self):
         return IntravenousModels(self.params)
