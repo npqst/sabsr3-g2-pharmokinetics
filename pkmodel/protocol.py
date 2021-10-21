@@ -3,7 +3,7 @@
 #
 
 import ast
-from .models import IntravenousModels
+from .models import IntravenousModels, SubcutaneousModels
 from .AbstractProtocol import AbstractProtocol
 
 
@@ -52,10 +52,14 @@ class Protocol(AbstractProtocol):
         for k in self.params.keys():
             if k not in param_dicts:
                 param_dicts[k] = self.params[k]
-        for i in range(self.params['nr_compartments']):
+
+        for i in range(1, param_dicts['nr_compartments'] + 1):
             key = f'periph_{i}'
             if key not in param_dicts:
                 param_dicts[key] = self.params['periph_default']
+        if (param_dicts['injection_type'] == 'subcutaneous'
+                and 'k_a' not in param_dicts.keys()):
+            param_dicts['k_a'] = 1.0
         self.params = param_dicts
 
     def check_fill_parameters(self):
