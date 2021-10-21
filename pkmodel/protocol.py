@@ -56,8 +56,8 @@ class Protocol(AbstractProtocol):
             key = f'periph_{i}'
             if key not in param_dicts:
                 param_dicts[key] = self.params['periph_default']
-        if (param_dicts['injection_type'] == 'subcutaneous' and
-                'k_a' not in param_dicts.keys()):
+        if (param_dicts['injection_type'] == 'subcutaneous'
+                and 'k_a' not in param_dicts.keys()):
             param_dicts['k_a'] = 1.0
         self.params = param_dicts
 
