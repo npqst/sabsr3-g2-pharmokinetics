@@ -8,15 +8,19 @@ class IntravenousModels(AbstractModel):
     """Class for the intravenous bolus model -i.e. 1 peripheral compartment."""
     def __init__(self, parameters):
         self.parameters = parameters
+        self.name = parameters['name']
+        self.nr_compartments = parameters['nr_compartments']
         self.CL = parameters['CL']
         self.V_c = parameters['V_c']
-        self.V_p1 = parameters['V_p1']
-        self.Q_p1 = parameters['Q_p1']
+        self.periph_1 = parameters['periph_1']
         self.X = parameters['X']
         self.dose = parameters['dose']
 
     def rhs(self, t, y):
         q_c, q_p1 = y
+        transitions = []        #TODO!
+        for i in range(self.nr_compartments):
+            self.generate_transition(q[i])
         transition = self.Q_p1 * (q_c / self.V_c - q_p1 / self.V_p1)
         dqc_dt = self.dose(t, self.X) - q_c / self.V_c * self.CL - transition
         dqp1_dt = transition
@@ -59,4 +63,4 @@ class SubcutaneousModels(AbstractModel):
                                         t_span=[t_eval[0], t_eval[-1]],
                                         y0=y0,
                                         t_eval=t_eval)
-        return Solution(sol)
+        return Solution(sol, self.parameters)
