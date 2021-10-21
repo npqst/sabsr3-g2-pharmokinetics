@@ -49,5 +49,5 @@ class Protocol(AbstractProtocol):
                 param_dicts[k] = self.params[k]
         return param_dicts
 
-    def generate_model(self):
-        return IntravenousModels(self.params)
+    def generate_model(self, param_dicts):
+        return IntravenousModels(param_dicts)
