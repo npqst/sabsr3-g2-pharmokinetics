@@ -81,6 +81,7 @@ class Model(AbstractModel):
             raise ValueError('Solution should be non-negative.')
         return Solution(sol, self.parameters)
 
+
 class IntravenousModels(Model):
     """Class for the intravenous bolus model with a single central compartment
     and variable number of peripheral compartments"""
