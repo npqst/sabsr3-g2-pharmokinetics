@@ -2,7 +2,7 @@ import pkmodel as pk
 import matplotlib.pyplot as plt
 
 
-protocol = pk.Protocol()
+protocol = pk.Protocol('pkmodel/config_file.txt')
 model = protocol.generate_model()
 x = model.solve()
 
