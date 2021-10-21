@@ -7,10 +7,6 @@ from .models import IntravenousModels, SubcutaneousModels
 from .AbstractProtocol import AbstractProtocol
 
 
-# TODO: move dose to appropriate location
-
-
-
 class Protocol(AbstractProtocol):
     """A Pharmokinetic (PK) protocol
 
