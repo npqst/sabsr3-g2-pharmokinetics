@@ -1,5 +1,5 @@
 import unittest
-# import pkmodel as pk
+import pkmodel as pk
 
 
 class ProtocolTest(unittest.TestCase):
@@ -16,7 +16,7 @@ class ProtocolTest(unittest.TestCase):
     #     new_dict={}
 
     def test_generate_model(self):
-        import pkmodel as pk
+        # from pkmodel.protocol import Protocol
         protocol = pk.Protocol('pkmodel/tests/testarray1.txt')
         with self.assertRaises(Exception) as context:
             protocol.generate_model()
