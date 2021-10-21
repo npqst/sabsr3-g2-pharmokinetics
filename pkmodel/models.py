@@ -32,7 +32,7 @@ class Model(AbstractModel):
         self.CL = parameters['CL']
         self.V_c = parameters['V_c']
         self.X = parameters['X']
-        self.dose = select_dose(parameters['dose_mode'])
+        self.dose = select_dose(parameters['dose'])
         self.base_compartments = 0
 
     def generate_transition(self, parameter_tuple, q_central, q_peripheral):
@@ -75,7 +75,7 @@ class Model(AbstractModel):
                                         t_span=[t_eval[0], t_eval[-1]],
                                         y0=y0,
                                         t_eval=t_eval)
-        return Solution(sol)
+        return Solution(sol, self.parameters)
 
 
 class IntravenousModels(Model):
