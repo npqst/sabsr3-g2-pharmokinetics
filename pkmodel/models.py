@@ -1,7 +1,7 @@
 import numpy as np
 import scipy.integrate
-from pkmodel.Solution import Solution
-from pkmodel.AbstractModel import AbstractModel
+from .solution import Solution
+from .AbstractModel import AbstractModel
 
 
 class IntravenousModels(AbstractModel):
@@ -29,7 +29,7 @@ class IntravenousModels(AbstractModel):
                                         t_span=[t_eval[0], t_eval[-1]],
                                         y0=y0,
                                         t_eval=t_eval)
-        return Solution(sol)
+        return Solution(sol, self.parameters)
 
 
 class SubcutaneousModels(AbstractModel):
@@ -59,4 +59,4 @@ class SubcutaneousModels(AbstractModel):
                                         t_span=[t_eval[0], t_eval[-1]],
                                         y0=y0,
                                         t_eval=t_eval)
-        return Solution(sol)
+        return Solution(sol, self.parameters)

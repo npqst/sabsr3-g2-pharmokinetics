@@ -3,8 +3,8 @@
 #
 
 import json
-from pkmodel.models import IntravenousModels
-from pkmodel.AbstractProtocol import AbstractProtocol
+from .models import IntravenousModels
+from .AbstractProtocol import AbstractProtocol
 
 
 # TODO: move dose to appropriate location
