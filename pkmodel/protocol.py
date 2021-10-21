@@ -45,11 +45,13 @@ class Protocol(AbstractProtocol):
         dictionaries_list = ast.literal_eval(str(dictionaries_list_str))
         return dictionaries_list
 
-    def fill_parameters(self, param_dicts):
+    def fill_parameters(self, file_dir):
+        param_dicts = self.read_config(file_dir)
         for k in self.params.keys():
             if k not in param_dicts:
                 param_dicts[k] = self.params[k]
         return param_dicts
 
-    def generate_model(self, param_dicts):
+    def generate_model(self, file_dir):
+        param_dicts = self.fill_parameters(file_dir)
         return IntravenousModels(param_dicts)

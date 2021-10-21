@@ -3,9 +3,7 @@ import matplotlib.pyplot as plt
 
 
 protocol = pk.Protocol()
-dictionary = protocol.read_config('pkmodel/config_file.txt')
-updated_dictionary = protocol.fill_parameters(dictionary)
-model = protocol.generate_model(updated_dictionary)
+model = protocol.generate_model('pkmodel/config_file.txt')
 x = model.solve()
 
 print(x.get_solution)
