@@ -29,6 +29,10 @@ class IntravenousModels(AbstractModel):
                                         t_span=[t_eval[0], t_eval[-1]],
                                         y0=y0,
                                         t_eval=t_eval)
+        if not isinstance(sol, float):
+            raise TypeError('Solution should be a float.')
+        if np.any(sol < 0):
+            raise ValueError('Solution should be non-negative.')
         return Solution(sol)
 
 
@@ -59,4 +63,9 @@ class SubcutaneousModels(AbstractModel):
                                         t_span=[t_eval[0], t_eval[-1]],
                                         y0=y0,
                                         t_eval=t_eval)
+        if not isinstance(sol, float):
+            raise TypeError('Solution should be a float.')
+        if np.any(sol < 0):
+            raise ValueError('Solution should be non-negative.')
+        return Solution(sol)
         return Solution(sol)
