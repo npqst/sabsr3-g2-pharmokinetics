@@ -6,7 +6,7 @@ Authors: SABS R3 Group 2
 """
 from abc import ABC, abstractmethod
 
-from pkmodel.AbstractSolution import AbstractSolution
+from .AbstractSolution import AbstractSolution
 
 
 class AbstractModel(ABC):

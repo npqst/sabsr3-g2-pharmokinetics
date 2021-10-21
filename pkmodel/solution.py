@@ -5,7 +5,7 @@ Authors: SABS R3 Group 2
 20.10.2021
 """
 
-from pkmodel.AbstractSolution import AbstractSolution
+from .AbstractSolution import AbstractSolution
 
 
 class Solution(AbstractSolution):
