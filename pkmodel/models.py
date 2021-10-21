@@ -77,8 +77,8 @@ class Model(AbstractModel):
                                         t_eval=t_eval)
         # if not isinstance(sol, float):
         # raise TypeError('Solution should be a float.')
-        if np.any(sol < 0):
-            raise ValueError('Solution should be non-negative.')
+        # if np.any(sol < 0):
+        # raise ValueError('Solution should be non-negative.')
         return Solution(sol, self.parameters)
 
 
