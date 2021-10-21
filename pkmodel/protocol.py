@@ -2,9 +2,9 @@
 # Protocol class
 #
 
-import json
-from pkmodel.models import IntravenousModels
-from pkmodel.AbstractProtocol import AbstractProtocol
+import ast
+from .models import IntravenousModels
+from .AbstractProtocol import AbstractProtocol
 
 
 # TODO: move dose to appropriate location
@@ -36,15 +36,17 @@ class Protocol(AbstractProtocol):
 
     def read_config(self, file_dir):
         #get current directory and add to file_dir
-        config_file = open("file_dir", "r")
-        dictionaries_list_str = config_file  # .split(",")
+        config_file = open(file_dir, "r")
+        config_file_str = config_file.read()
+        config_file.close()
+        dictionaries_list_str = config_file_str  # .split(",")
         # <-- for splitting up multipl dictionaries in the future
         # dictionaries_list = [json.loads(d) for d in dictionaries_list_str]
-        dictionaries_list = json.loads(dictionaries_list_str)
+        dictionaries_list = ast.literal_eval(str(dictionaries_list_str))
         return dictionaries_list
 
     def fill_parameters(self, param_dicts):
-        for k in self.params.keys:
+        for k in self.params.keys():
             if k not in param_dicts:
                 param_dicts[k] = self.params[k]
         return param_dicts
