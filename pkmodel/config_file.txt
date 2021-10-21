@@ -9,5 +9,5 @@
     'CL': 5.0,
     'X': 6.0,
     'run_mode' : 'save',
-    'dose_mode': 'normal'    
+    'dose_mode': 'normal'
 }
