@@ -132,8 +132,9 @@ class IntravenousModels(Model):
 
 
 class SubcutaneousModels(Model):
-    """Class for the subcutaneous injection model with a single central compartment,
-    a single absorption compartment, and variable number of peripheral compartments
+    """Class for the subcutaneous injection model with a single
+    central compartment, a single absorption compartment, and
+    variable number of peripheral compartments
     """
 
     def __init__(self, parameters):
@@ -161,8 +162,8 @@ class SubcutaneousModels(Model):
 
         :param t: current time point
         :type t: float
-        :param y: [q_0, q_c, q_p1, ..., q_pn] - current amount in compartment at
-        time point t
+        :param y: [q_0, q_c, q_p1, ..., q_pn] - current amount in
+        compartment at time point t
         :type y: array of float with dimensions N
         where N is total number of compartments
         :return: dq_dt - an array of all compartments' dq_dt values at time t
