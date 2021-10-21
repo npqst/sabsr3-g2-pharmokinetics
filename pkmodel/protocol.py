@@ -58,47 +58,35 @@ class Protocol(AbstractProtocol):
                 param_dicts[key] = self.params['periph_default']
         self.params = param_dicts
 
+    def check_fill_parameters(self):
         if not isinstance(self.params, dict):
             raise TypeError('data input should be a dictionary')
 
-        if not isinstance(self.params['name'], str):
-            raise TypeError('name should be a string')
+        for i in 'name', 'injection_type':
+            if not isinstance(self.params[i], str):
+                raise TypeError('i should be a string')
 
-        if not isinstance(self.params['injection_type'], str):
-            raise TypeError('injection_type should be a string')
-
-        if not isinstance(self.params['nr_compartments'], float):
-            raise TypeError('nr_compartments should be a float')
+        if not isinstance(self.params['nr_compartments'], int):
+            raise TypeError('nr_compartments should be a integer')
+        if self.params['nr_compartments'] < 0:
+            raise ValueError('nr_compartments should be at least 0')
 
         if not isinstance(self.params['periph_1'], tuple):
             raise TypeError('periph_1 should be a tuple')
 
-        if not isinstance(self.params['periph_1'][1], float):
-            raise TypeError('volume of first peripheral compartments should be a float')
+        for i in range(0, 1):
+            if not isinstance(self.params['periph_1'][i], float):
+                raise TypeError('values associated with the peripheral'
+                                ' compartment should be floats')
+            if self.params['periph_1'][i] < 0:
+                raise ValueError('values associated with the peripheral'
+                                 ' compartment should be positive')
 
-        if not isinstance(self.params['periph_1'][2], float):
-            raise TypeError('volume of second peripheral compartments should be a float')
-
-        if not isinstance(self.params['CL'], float):
-            raise TypeError('CL should be a float')
-
-        if not isinstance(self.params['X'], float):
-            raise TypeError('X should be a float')
-
-        if self.params['nr_compartments'] < 0:
-            raise ValueError('nr_compartments should be at least 0')
-
-        if self.params['periph_1'][1] < 0:
-            raise ValueError('volume of first peripheral compartments should be positive')
-
-        if self.params['periph_1'][2] < 0:
-            raise ValueError('volume of second peripheral compartments should be positive')
-
-        if self.params['CL'] < 0:
-            raise ValueError('CL should be positive')
-
-        if self.params['X'] < 0:
-            raise ValueError('X should be positive')
+        for i in 'Cl', 'X':
+            if not isinstance(self.params['i'], float):
+                raise TypeError('i should be a float')
+            if self.params[i] < 0:
+                raise ValueError('i should be at least 0')
 
     def generate_model(self):
         if self.params['injection_type'] == 'intravenous':
