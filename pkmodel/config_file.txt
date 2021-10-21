@@ -8,6 +8,6 @@
     'periph_3': (1.0, 1.0),
     'CL': 5.0,
     'X': 6.0,
-    'run_mode' : 'save'
+    'run_mode' : 'save',
     'dose_mode': 'normal'    
 }

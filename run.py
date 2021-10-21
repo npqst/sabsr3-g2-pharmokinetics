@@ -1,3 +1,10 @@
+"""Run file for 1st order linear ODE pharmokinetic model.
+Authors: SABS R3 Group 2
+20.10.2021
+
+usage: python run.py
+"""
+
 import pkmodel as pk
 import matplotlib.pyplot as plt
 

@@ -32,7 +32,7 @@ class Model(AbstractModel):
         self.CL = parameters['CL']
         self.V_c = parameters['V_c']
         self.X = parameters['X']
-        self.dose = select_dose(parameters['dose_mode'])
+        self.dose = select_dose(parameters['dose'])
         self.base_compartments = 0
 
     def generate_transition(self, parameter_tuple, q_central, q_peripheral):
@@ -79,8 +79,7 @@ class Model(AbstractModel):
             raise TypeError('Solution should be a float.')
         if np.any(sol < 0):
             raise ValueError('Solution should be non-negative.')
-        return Solution(sol)
-
+        return Solution(sol, self.parameters)
 
 class IntravenousModels(Model):
     """Class for the intravenous bolus model with a single central compartment
