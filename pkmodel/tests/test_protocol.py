@@ -17,7 +17,7 @@ class ProtocolTest(unittest.TestCase):
 
     def test_generate_model(self):
         import pkmodel as pk
-        protocol = pk.Protocol('testarray1.txt')
+        protocol = pk.Protocol('pkmodel/tests/testarray1.txt')
         with self.assertRaises(Exception) as context:
             protocol.generate_model()
         self.assertTrue('model type should be either'
