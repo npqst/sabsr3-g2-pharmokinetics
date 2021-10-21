@@ -58,19 +58,22 @@ class Protocol(AbstractProtocol):
                 param_dicts[key] = self.params['periph_default']
         self.params = param_dicts
 
-    def check_fill_parameters(self):
+    def check_fill_parametersdict(self):
         if not isinstance(self.params, dict):
             raise TypeError('data input should be a dictionary')
 
+    def check_fill_parametersstr(self):
         for i in 'name', 'injection_type':
             if not isinstance(self.params[i], str):
                 raise TypeError('i should be a string')
 
+    def check_fill_parameterscompartments(self):
         if not isinstance(self.params['nr_compartments'], int):
             raise TypeError('nr_compartments should be a integer')
         if self.params['nr_compartments'] < 0:
             raise ValueError('nr_compartments should be at least 0')
 
+    def check_fill_parametersperip(self):
         if not isinstance(self.params['periph_1'], tuple):
             raise TypeError('periph_1 should be a tuple')
 
@@ -82,6 +85,7 @@ class Protocol(AbstractProtocol):
                 raise ValueError('values associated with the peripheral'
                                  ' compartment should be positive')
 
+    def check_fill_parametersCLX(self):
         for i in 'Cl', 'X':
             if not isinstance(self.params['i'], float):
                 raise TypeError('i should be a float')
