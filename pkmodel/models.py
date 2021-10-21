@@ -41,17 +41,17 @@ class Model(AbstractModel):
         peripheral compartment.
 
         :param parameter_tuple: (V_peripheral, Q_peripheral) - tuple
-        containing volume and rate constants that define a peripheral
-        compartment
+            containing volume and rate constants that define a peripheral
+            compartment
         :type parameter_tuple: tuple of non-negative floats
         :param q_central: time variable amount q in central compartment
-        solved numerically at time t
+            solved numerically at time t
         :type q_central: float
         :param q_peripheral: time variable amount q in peripheral compartment
-        solved numerically at time t
+            solved numerically at time t
         :type q_peripheral: float
         :return: computed transition value describing flux between central
-        and peripheral compartment at time t
+            and peripheral compartment at time t
         :rtype: float
         """
         (V_peripheral, Q_peripheral) = parameter_tuple
@@ -64,8 +64,8 @@ class Model(AbstractModel):
         scipy solve_ivp for a specified time interval.
 
         :return: numeric solution of amount for each compartment as float
-        array with dimensions N x T, where N is the total number of
-        compartments and T is the length of the time eval vector.
+            array with dimensions N x T, where N is the total number of
+            compartments and T is the length of the time eval vector.
         :rtype: Solution
         """
         t_eval = np.linspace(0, 1, 1000)
@@ -100,20 +100,21 @@ class IntravenousModels(Model):
         """Right Hand Side (rhs) of the ODE model.
         Contains the implementation of the differential equations
         defining the PK model.
-        $dq_c / dt = Dose(t) - \frac{q_c}{V_c}CL
-                - Q_{px}(\frac{q_c}{V_c} - \frac{q_{px}}{V_{px}})$
-        $dq_px / dt = Q_{px}(\frac{q_c}{V_c} - \frac{q_{px}}{V_{px}})$
-        Called as lambda function within scipy solve_ivp.
+
+        | dq_c / dt = Dose(t) - (q_c / V_c) * CL
+                - Q_px( q_c / V_c - q_px / V_px)
+        | dq_px / dt = Q_px(q_c / V_c - q_px / V_px)
+        | Called as lambda function within scipy solve_ivp.
 
         :param t: current time point
         :type t: float
         :param y: [q_c, q_p1, ..., q_pn] - current amount in compartment at
-        time point t
-        :type y: array of float with dimensions N
-        where N is total number of compartments
+            time point t with dimensions N where N is total number of
+            compartments
+        :type y: array of float
         :return: dq_dt - an array of all compartments' dq_dt values at time t
-        :rtype: array of float with dimensions N
-        where N is total number of compartments
+            with dimensions N where N is total number of compartments
+        :rtype: array of float
         """
         q = y
         transitions = [0.]        # Placeholder in list for dqc_dt
@@ -160,21 +161,22 @@ class SubcutaneousModels(Model):
         """Right Hand Side (rhs) of the ODE model.
         Contains the implementation of the differential equations
         defining the PK model.
-        $dq0 / dt = Dose(t) - k_{a}q_0 $
-        $dq_c / dt = k_{a}q_0 - \frac{q_c}{V_c}CL
-                        - Q_{px}(\frac{q_c}{V_c} - \frac{q_{px}}{V_{px}})$
-        $dq_px / dt = Q_{px}(\frac{q_c}{V_c} - \frac{q_{px}}{V_{px}})$
-        Called as lambda function within scipy solve_ivp.
+
+        | dq0 / dt = Dose(t) - k_a * q_0
+        | dq_c / dt = k_a * q_0 - (q_c / V_c) CL
+                        - Q_px( q_c / V_c - q_px / V_px )
+        | dq_px / dt = Q_px (q_c / V_c - q_px / V_px)
+        | Called as lambda function within scipy solve_ivp.
 
         :param t: current time point
         :type t: float
         :param y: [q_0, q_c, q_p1, ..., q_pn] - current amount in
-        compartment at time point t
-        :type y: array of float with dimensions N
-        where N is total number of compartments
+            compartment at time point t with dimensions N
+            where N is total number of compartments
+        :type y: array of float
         :return: dq_dt - an array of all compartments' dq_dt values at time t
-        :rtype: array of float with dimensions N
-        where N is total number of compartments
+            with dimensions N where N is total number of compartments
+        :rtype: array of float
         """
 
         q = y
