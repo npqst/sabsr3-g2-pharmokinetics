@@ -75,6 +75,10 @@ class Model(AbstractModel):
                                         t_span=[t_eval[0], t_eval[-1]],
                                         y0=y0,
                                         t_eval=t_eval)
+        # if not isinstance(sol, float):
+        # raise TypeError('Solution should be a float.')
+        # if np.any(sol < 0):
+        # raise ValueError('Solution should be non-negative.')
         return Solution(sol, self.parameters)
 
 
@@ -152,6 +156,7 @@ class SubcutaneousModels(Model):
         self.base_compartments = 2
 
     def rhs(self, t, y):
+
         """Right Hand Side (rhs) of the ODE model.
         Contains the implementation of the differential equations
         defining the PK model.
@@ -171,6 +176,7 @@ class SubcutaneousModels(Model):
         :rtype: array of float with dimensions N
         where N is total number of compartments
         """
+
         q = y
         transitions = [0., 0.]  # Placeholder [dq0_dt, dqc_dt, ... ]
         sum_of_transitions = 0.
@@ -188,3 +194,4 @@ class SubcutaneousModels(Model):
         transitions[1] = dqc_dt        # prepend dqc_dt to list of dq_dt
         dq_dt = transitions
         return dq_dt
+

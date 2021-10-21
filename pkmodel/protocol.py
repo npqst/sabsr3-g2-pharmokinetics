@@ -47,6 +47,7 @@ class Protocol(AbstractProtocol):
         for k in self.params.keys():
             if k not in param_dicts:
                 param_dicts[k] = self.params[k]
+
         for i in range(1, param_dicts['nr_compartments'] + 1):
             key = f'periph_{i}'
             if key not in param_dicts:
@@ -55,6 +56,40 @@ class Protocol(AbstractProtocol):
                 and 'k_a' not in param_dicts.keys()):
             param_dicts['k_a'] = 1.0
         self.params = param_dicts
+
+    def check_fill_parametersdict(self):
+        if not isinstance(self.params, dict):
+            raise TypeError('data input should be a dictionary')
+
+    def check_fill_parametersstr(self):
+        for i in 'name', 'injection_type':
+            if not isinstance(self.params[i], str):
+                raise TypeError('i should be a string')
+
+    def check_fill_parameterscompartments(self):
+        if not isinstance(self.params['nr_compartments'], int):
+            raise TypeError('nr_compartments should be a integer')
+        if self.params['nr_compartments'] < 0:
+            raise ValueError('nr_compartments should be at least 0')
+
+    def check_fill_parametersperip(self):
+        if not isinstance(self.params['periph_1'], tuple):
+            raise TypeError('periph_1 should be a tuple')
+
+        for i in range(0, 1):
+            if not isinstance(self.params['periph_1'][i], float):
+                raise TypeError('values associated with the peripheral'
+                                ' compartment should be floats')
+            if self.params['periph_1'][i] < 0:
+                raise ValueError('values associated with the peripheral'
+                                 ' compartment should be positive')
+
+    def check_fill_parametersCLX(self):
+        for i in 'Cl', 'X':
+            if not isinstance(self.params['i'], float):
+                raise TypeError('i should be a float')
+            if self.params[i] < 0:
+                raise ValueError('i should be at least 0')
 
     def generate_model(self):
         if self.params['injection_type'] == 'intravenous':
