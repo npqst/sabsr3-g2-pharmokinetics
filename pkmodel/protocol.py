@@ -22,7 +22,7 @@ class Protocol(AbstractProtocol):
         an example paramter
 
     """
-    def __init__(self, file_dir = None):
+    def __init__(self, file_dir=None):
         self.params = {
             'name': 'model1',
             'Q_p1': 1.0,
