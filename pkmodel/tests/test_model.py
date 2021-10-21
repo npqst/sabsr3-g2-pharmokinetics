@@ -12,4 +12,3 @@ class ModelTest(unittest.TestCase):
         """
         # model = pk.Model()
         self.assertEqual(42, 42)
-
