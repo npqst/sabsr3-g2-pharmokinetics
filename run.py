@@ -2,8 +2,8 @@ import pkmodel as pk
 import matplotlib.pyplot as plt
 
 
-protocol = pk.Protocol()
-model = protocol.generate_model('pkmodel/config_file.txt')
+protocol = pk.Protocol('pkmodel/config_file.txt')
+model = protocol.generate_model()
 x = model.solve()
 
 print(x.get_solution)

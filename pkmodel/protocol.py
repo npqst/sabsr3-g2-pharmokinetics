@@ -22,7 +22,7 @@ class Protocol(AbstractProtocol):
         an example paramter
 
     """
-    def __init__(self):
+    def __init__(self, file_dir = None):
         self.params = {
             'name': 'model1',
             'Q_p1': 1.0,
@@ -33,6 +33,8 @@ class Protocol(AbstractProtocol):
             'X': 1.0,
             'dose': dose
         }
+        if file_dir:
+            self.fill_parameters(file_dir)
 
     def read_config(self, file_dir):
         #get current directory and add to file_dir
@@ -50,8 +52,7 @@ class Protocol(AbstractProtocol):
         for k in self.params.keys():
             if k not in param_dicts:
                 param_dicts[k] = self.params[k]
-        return param_dicts
+        self.params = param_dicts
 
-    def generate_model(self, file_dir):
-        param_dicts = self.fill_parameters(file_dir)
-        return IntravenousModels(param_dicts)
+    def generate_model(self):
+        return IntravenousModels(self.params)
