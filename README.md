@@ -8,7 +8,9 @@ Review documentation here: https://sabsr3-g2-pharmokinetics.readthedocs.io/en/la
 
 This is the compartmental pharmacokinetic (PK) model developed by Group 2 for the SABS Software Development module. 
 
-A pharmakinetic model provides a quantitative basis for describing the delivery of a drug to a patient, the diffusion of that drug through the plasma/body tissue, and the subsequent clearance of the drug from the patient’s system. It is used to ensure that sufficient concentrations of drugs are provided for efficacy but also that the concentration does not exceed the toxic threshold (See Diagram 1). 
+A pharmakinetic model provides a quantitative basis for describing the delivery of a drug to a patient, the diffusion of that drug through the plasma/body tissue, and the subsequent clearance of the drug from the patient’s system. It is used to ensure that sufficient concentrations of drugs are provided for efficacy but also that the concentration does not exceed the toxic threshold.
+
+![Screenshot 2021-10-22 at 15 36 26](https://user-images.githubusercontent.com/77674238/138473168-71fa2dae-bf8b-427c-bc7a-641ccd9592df.png)
 
 ## Usage
 
