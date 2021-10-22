@@ -52,6 +52,14 @@ class ProtocolTest(unittest.TestCase):
         }
         self.assertEqual(filled_params, true_params)
 
+    def test_inputs(self):
+        """
+        Test assertions are called for each issue
+        """
+        
+
+
+
 if __name__ == '__main__':
     unittest.main()
 

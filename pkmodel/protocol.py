@@ -26,7 +26,9 @@ class Protocol(AbstractProtocol):
             'X': 1.0,
             'dose_mode': 'normal',
             'nr_compartments': 1,          # nr of peripheral compartments
-            'injection_type': 'intravenous'     # 'subcutaneous'
+            'injection_type': 'intravenous',    # 'subcutaneous'
+            'save_mode': 'save'
+            'time': 1
         }
         if file_dir:
             self.fill_parameters(file_dir)
@@ -64,7 +66,7 @@ class Protocol(AbstractProtocol):
     def check_fill_parametersstr(self):
         for i in 'name', 'injection_type':
             if not isinstance(self.params[i], str):
-                raise TypeError('i should be a string')
+                raise TypeError(f'{i} should be a string')
 
     def check_fill_parameterscompartments(self):
         if not isinstance(self.params['nr_compartments'], int):
@@ -77,19 +79,22 @@ class Protocol(AbstractProtocol):
             raise TypeError('periph_1 should be a tuple')
 
         for i in range(0, 1):
-            if not isinstance(self.params['periph_1'][i], float):
+            if not isinstance(self.params['periph_1'][i], int):
                 raise TypeError('values associated with the peripheral'
-                                ' compartment should be floats')
+                                ' compartment should be integer')
             if self.params['periph_1'][i] < 0:
                 raise ValueError('values associated with the peripheral'
                                  ' compartment should be positive')
 
-    def check_fill_parametersCLX(self):
-        for i in 'Cl', 'X':
-            if not isinstance(self.params['i'], float):
-                raise TypeError('i should be a float')
+    def check_fill_parametersCLXtime(self):
+        for i in 'Cl', 'X', 'time':
+            if not isinstance(self.params[i], float):
+                raise TypeError(f'{i} should be a float')
             if self.params[i] < 0:
-                raise ValueError('i should be at least 0')
+                raise ValueError(f'{i}' should be at least 0')
+            if i == time:
+                if time > 5:
+                    raise ValueError('Time should not exceed a value of 5 hours')
 
     def generate_model(self):
         if self.params['injection_type'] == 'intravenous':
@@ -99,3 +104,9 @@ class Protocol(AbstractProtocol):
         else:
             raise Exception(
                 'model type should be either intravenous or subcutaneous')
+    
+    def call_all_checks(self):
+        self.check_fill_parametersdict()
+        self.check_fill_parameterscompartments()
+        self.check_fill_parametersperip()
+        self.check_fill_parametersCLXtime(
