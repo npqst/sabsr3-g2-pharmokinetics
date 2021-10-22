@@ -1,0 +1,1 @@
+python3 run.py pkmodel/tests/test_zeroes_config_file.txt
