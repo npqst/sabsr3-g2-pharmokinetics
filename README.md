@@ -53,7 +53,8 @@ The parameters for these differential equations should be defined in order to al
                 'CL': 5.0,
                 'X': 6.0,
                 'run_mode' : 'save',
-                'dose_mode': 'normal'    
+                'dose_mode': 'normal'
+                'time': '100'
             }
 
 #### Parameters:   
@@ -66,6 +67,7 @@ The parameters for these differential equations should be defined in order to al
 - X = mass of drug administered at each dose
 - run_mode = option to switch between 'save', which saves the plot, solution, and parameter output files, and 'test', which simply displays the plot of the solution
 - dose_mode = the dose function, which can be chosed from 'normal', which is a single dose, and 'pulse', which initiates a series of pulse doses
+- time = time period in which dosing is observed (hours - maximum 5)
 
 ## Installation
 
