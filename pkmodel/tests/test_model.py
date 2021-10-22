@@ -17,7 +17,8 @@ class ModelTest(unittest.TestCase):
                        'periph_1': (5.0, 3.0),
                        'CL': 5.0,
                        'X': 6.0,
-                       'dose_mode': 'normal'
+                       'dose_mode': 'normal',
+                       'time': 1
                        },
                       {'name': 'test1',
                       'injection_type': 'intravenous',
@@ -28,7 +29,8 @@ class ModelTest(unittest.TestCase):
                        'periph_3': (6.0, 2.4),
                        'CL': 0,
                        'X': 1.6,
-                       'dose_mode': 'normal'
+                       'dose_mode': 'normal',
+                       'time': 1
                        }]
         expected_model = [{'name': 'test1',
                           'injection_type': 'subcutaneous',
@@ -37,7 +39,8 @@ class ModelTest(unittest.TestCase):
                            'periph_1': (5.0, 3.0),
                            'CL': 5.0,
                            'X': 6.0,
-                           'dose_mode': 'normal'
+                           'dose_mode': 'normal',
+                           'time': 1
                            },
                           {'name': 'test1',
                           'injection_type': 'intravenous',
@@ -48,7 +51,8 @@ class ModelTest(unittest.TestCase):
                            'periph_3': (6.0, 2.4),
                            'CL': 0,
                            'X': 1.6,
-                           'dose_mode': 'normal'
+                           'dose_mode': 'normal',
+                           'time': 1
                            }]
         for i in range(0, 1):
             model = pk.models.Model(parameters[i])
@@ -65,7 +69,8 @@ class ModelTest(unittest.TestCase):
                       'periph_1': (5.0, 3.0),
                       'CL': 5.0,
                       'X': 6.0,
-                      'dose_mode': 'normal'
+                      'dose_mode': 'normal',
+                      'time': 1
                       }
         model = pk.models.Model(parameters)
         test_array = [[(1, 1), 1, 1], [(0, 0), 0, 0], [(5.2, 3.1), 2, 2.6]]
