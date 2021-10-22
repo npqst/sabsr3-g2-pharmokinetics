@@ -13,11 +13,6 @@ Welcome to SABS:R3 2021 Group 2 Pharmokinetics Modelling Project's documentation
 
    modules
    pkmodel
-   pkmodel.tests
-   prototype
-   run
-   setup
-   test
 
 
 Indices and tables

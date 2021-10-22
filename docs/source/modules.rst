@@ -5,7 +5,3 @@ sabsr3-g2-pharmokinetics
    :maxdepth: 4
 
    pkmodel
-   prototype
-   run
-   setup
-   test
