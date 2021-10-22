@@ -81,13 +81,21 @@ class ModelTest(unittest.TestCase):
             self.assertEqual(test, expected_transition[i])
 
     def test_abstractmodel(self):
-        with self.assertRaises(TypeError):
-            TestModel()
+        AbstractModel.__abstractmethods__ = set()
+        model = AbstractModel()
+        with self.assertRaises(NotImplementedError):
+            model.solve()
+        # class Dummy(AbstractModel):
+            # self.assertTrue(AbstractModel, NotImplementedError)
+
+    # def test_abstractmodel(self):
+        # with self.assertRaises(TypeError):
+            # TestModel()
 
 
-class TestModel(AbstractModel):
-    def ___init___(self):
-        pass
+# class TestModel(AbstractModel):
+    # def ___init___(self):
+        # pass
 
 
 if __name__ == '__main__':
