@@ -7,9 +7,9 @@ model subclasses.
 
 import numpy as np
 import scipy.integrate
-from .solution import Solution
-from .AbstractModel import AbstractModel
-from .dose import select_dose
+from pkmodel.solution import Solution
+from pkmodel.AbstractModel import AbstractModel
+from pkmodel.dose import select_dose
 
 
 class Model(AbstractModel):
@@ -32,7 +32,7 @@ class Model(AbstractModel):
         self.CL = parameters['CL']
         self.V_c = parameters['V_c']
         self.X = parameters['X']
-        self.dose = select_dose(parameters['dose'])
+        self.dose = select_dose(parameters['dose_mode'])
         self.base_compartments = 0
 
     def generate_transition(self, parameter_tuple, q_central, q_peripheral):

@@ -102,7 +102,7 @@ class Solution(AbstractSolution):
         :return: nill
         """
         param_dict = self.get_parameters
-        del param_dict['dose']
+        del param_dict['dose_mode']
 
         with open('{0}{1}_params.txt'.format(dir_path,
                                              model_no), 'w') as file:
