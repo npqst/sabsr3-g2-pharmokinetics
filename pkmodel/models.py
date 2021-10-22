@@ -69,7 +69,7 @@ class Model(AbstractModel):
         compartments and T is the length of the time eval vector.
         :rtype: Solution
         """
-        t_eval = np.linspace(0, 1000, self.time)
+        t_eval = np.linspace(0, self.time, 1000)
         y0 = np.array(np.zeros(
                      (self.nr_compartments + self.base_compartments)))
         sol = scipy.integrate.solve_ivp(fun=lambda t, y: self.rhs(t, y),
