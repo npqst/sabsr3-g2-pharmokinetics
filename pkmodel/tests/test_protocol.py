@@ -87,7 +87,6 @@ class ProtocolTest(unittest.TestCase):
 
     def test_inputs_int(self):
         from pkmodel import Protocol
-        protocol = Protocol()
         for i in 'nr_compartments', 'time':
             error_dict = {
                 -1: f'{i} should be at least 0',
@@ -95,15 +94,23 @@ class ProtocolTest(unittest.TestCase):
                 "string": f'{i} should be a integer'
             }
             for j in -1, 3.0, "string":
-                protocol.params['nr_compartments'] = j
+                protocol = Protocol()
+                protocol.params[i] = j
                 with self.assertRaises(Exception) as context:
                     protocol.call_all_checks()
                     self.assertTrue(error_dict[j] in context.exception)
+            if i == 'time':
+                protocol = Protocol()
+                protocol.params[i] = 6
+                with self.assertRaises(Exception) as context:
+                    protocol.call_all_checks()
+                    self.assertTrue('Time should not exceed \
+                        a value of 5 hours' in context.exception)
 
     def test_inputs_strings(self):
         from pkmodel import Protocol
-        protocol = Protocol()
         for i in 'name', 'injection_type':
+            protocol = Protocol()
             protocol.params[i] = 3.0
             with self.assertRaises(Exception) as context:
                 protocol.call_all_checks()
@@ -120,8 +127,8 @@ class ProtocolTest(unittest.TestCase):
 
     def test_generate_model(self):
         from pkmodel import Protocol
-        protocol = Protocol()
         for i in 'random', 'intravenous', 'subcutaneous':
+            protocol = Protocol()
             protocol.params['injection_type'] = i
             with self.assertRaises(Exception) as context:
                 protocol.generatemodel()
