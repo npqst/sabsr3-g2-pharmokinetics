@@ -31,7 +31,8 @@ These processes in this model are described as first order rate reactions with t
 The drug can be administered by two mechanisms in the model, which should be defined when running the model.
 1. Intravenous bolus - the drug is adminsitered directly into the central compartment 
     - It is described in these differential equations:
-    - ![formula](https://render.githubusercontent.com/render/math?math=e^{i \pi} = -1)
+    - ![Screenshot 2021-10-22 at 15 24 46](https://user-images.githubusercontent.com/77674238/138471144-b4e06fc4-b269-42c7-bf01-58d900bd3395.png)
+
 
 2. Subcutaneous - the drug is administered into a peripheral compartment which diffuses into the central compartment.
     - It is described in these differential equations:
