@@ -24,7 +24,7 @@ class Protocol(AbstractProtocol):
             'periph_default': (1.0, 1.0),      # (V_p1, Q_p1)
             'CL': 1.0,
             'X': 1.0,
-            'dose': 'normal',
+            'dose_mode': 'normal',
             'nr_compartments': 1,          # nr of peripheral compartments
             'injection_type': 'intravenous'     # 'subcutaneous'
         }
