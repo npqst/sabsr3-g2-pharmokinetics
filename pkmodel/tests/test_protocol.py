@@ -54,13 +54,13 @@ class ProtocolTest(unittest.TestCase):
         }
         self.assertEqual(filled_params, true_params)
 
-    def test_inputs_CLXTime(self):
+    def test_inputs_CLX(self):
         """
         Tests exceptions for bad inputs for CL, X and Time
         """
         from pkmodel import Protocol
         protocol = Protocol()
-        for i in 'CL', 'X', 'Time':
+        for i in 'CL', 'X':
             error_dict = {-1: f'{i} should be at least 0',
                           'test': f'{i} should be a float'}
             for j in -1, 'test':
@@ -85,19 +85,20 @@ class ProtocolTest(unittest.TestCase):
                 protocol.fill_parameters({})
                 self.assertTrue(error_dict[j] in context.exception)
 
-    def test_inputs_nr_compartments(self):
+    def test_inputs_int(self):
         from pkmodel import Protocol
         protocol = Protocol()
-        error_dict = {
-            -1: 'nr_compartments should be at least 0',
-            3.0: 'nr_compartments should be a integer',
-            "string": 'nr_compartments should be a integer'
-        }
-        for j in -1, 3.0, "string":
-            protocol.params['nr_compartments'] = j
-            with self.assertRaises(Exception) as context:
-                protocol.fill_parameters({})
-                self.assertTrue(error_dict[j] in context.exception)
+        for i in 'nr_compartments', 'time':
+            error_dict = {
+                -1: f'{i} should be at least 0',
+                3.0: f'{i} should be a integer',
+                "string": f'{i} should be a integer'
+            }
+            for j in -1, 3.0, "string":
+                protocol.params['nr_compartments'] = j
+                with self.assertRaises(Exception) as context:
+                    protocol.fill_parameters({})
+                    self.assertTrue(error_dict[j] in context.exception)
 
     def test_inputs_strings(self):
         from pkmodel import Protocol

@@ -28,7 +28,7 @@ class Protocol(AbstractProtocol):
             'nr_compartments': 1,          # nr of peripheral compartments
             'injection_type': 'intravenous',    # 'subcutaneous'
             'save_mode': 'save',
-            'time': 1.0
+            'time': 1
         }
         if file_dir:
             self.fill_parameters(file_dir)
@@ -53,11 +53,16 @@ class Protocol(AbstractProtocol):
             if not isinstance(self.params[i], str):
                 raise TypeError(f'{i} should be a string')
 
-    def check_fill_parameterscompartments(self):
-        if not isinstance(self.params['nr_compartments'], int):
-            raise TypeError('nr_compartments should be a integer')
-        if self.params['nr_compartments'] < 0:
-            raise ValueError('nr_compartments should be at least 0')
+    def check_fill_parametersint(self):
+        for i in 'nr_compartments', 'time':
+            if not isinstance(self.params['nr_compartments'], int):
+                raise TypeError(f'{i} should be a integer')
+            if self.params['nr_compartments'] < 0:
+                raise ValueError(f'{i} should be at least 0')
+            if i == 'time':
+                if self.params['time'] > 5.0:
+                    raise ValueError('Time should not '
+                                     'exceed a value of 5 hours')
 
     def check_fill_parametersperip(self):
         for n in range(1, self.params['nr_compartments'] + 1):
@@ -73,22 +78,18 @@ class Protocol(AbstractProtocol):
                         with the peripheral compartment \
                             {n} should be larger than 0')
 
-    def check_fill_parametersCLXtime(self):
-        for i in 'CL', 'X', 'time':
+    def check_fill_parametersCLX(self):
+        for i in 'CL', 'X':
             if not isinstance(self.params[i], float):
                 raise TypeError(f'{i} should be a float')
             if self.params[i] < 0:
                 raise ValueError(f'{i} should be at least 0')
-            if i == 'time':
-                if self.params['time'] > 5.0:
-                    raise ValueError('Time should not '
-                                     'exceed a value of 5 hours')
 
     def call_all_checks(self):
         self.check_fill_parametersdict()
-        self.check_fill_parameterscompartments()
+        self.check_fill_parametersint()
         self.check_fill_parametersperip()
-        self.check_fill_parametersCLXtime()
+        self.check_fill_parametersCLX()
 
     def fill_parameters(self, file_dir):
         param_dicts = self.read_config(file_dir)
