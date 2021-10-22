@@ -30,7 +30,7 @@ class Protocol(AbstractProtocol):
             'dose_mode': 'normal',
             'nr_compartments': 1,          # nr of peripheral compartments
             'injection_type': 'intravenous',    # 'subcutaneous'
-            'save_mode': 'save',
+            'run_mode': 'save',
             'time': 1
         }
         if file_dir:
