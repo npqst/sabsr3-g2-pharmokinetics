@@ -19,7 +19,7 @@ Classes
    :members:
    :inherited-members:
 
-.. automodule:: pkmodel.prototype
+.. automodule:: pkmodel.protocol
    :members:
    :inherited-members:
 
