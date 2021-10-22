@@ -92,7 +92,6 @@ class Solution(AbstractSolution):
         """
         self.generate_plot()
         plt.savefig('{0}Model{1}_plot.png'.format(dir_path, model_no))
-        plt.show()
 
     def save_parameters(self, dir_path, model_no):
         """ saves input parameters in text file
@@ -126,11 +125,18 @@ class Solution(AbstractSolution):
 
         :return: nill
         """
+        parameter_dict = self.get_parameters
+        #check run mode - either test or save
+        if parameter_dict['run_mode'] == 'save':
+            #run mode save = save graph fig
+            dir_path = './Output/'
+            if not os.path.isdir(dir_path):
+                os.mkdir(dir_path)
+            self.save_plot(dir_path, str(1))
+            self.save_parameters(dir_path, str(1))
+            self.save_solution(dir_path, str(1))
+        elif parameter_dict['run_mode'] == 'test':
+            #run mode test = show plot without save
+            self.show_plot()
 
-        dir_path = './Output/'
-        if not os.path.isdir(dir_path):
-            os.mkdir(dir_path)
 
-        self.save_plot(dir_path, str(1))
-        self.save_parameters(dir_path, str(1))
-        self.save_solution(dir_path, str(1))
