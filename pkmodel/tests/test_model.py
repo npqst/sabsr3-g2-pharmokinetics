@@ -10,26 +10,49 @@ class ModelTest(unittest.TestCase):
         """
         Tests Model creation.
         """
-        parameters = {'name': 'test1',
+        parameters = [{'name': 'test1',
                       'injection_type': 'subcutaneous',
-                      'V_c': 1.0,
-                      'nr_compartments': 1,
-                      'periph_1': (5.0, 3.0),
-                      'CL': 5.0,
-                      'X': 6.0,
-                      'dose_mode': 'normal'
-                      }
-        model = pk.models.Model(parameters)
-        expected_model = {'name': 'test1',
+                       'V_c': 1.0,
+                       'nr_compartments': 1,
+                       'periph_1': (5.0, 3.0),
+                       'CL': 5.0,
+                       'X': 6.0,
+                       'dose_mode': 'normal'
+                       },
+                      {'name': 'test1',
+                      'injection_type': 'intravenous',
+                       'V_c': 1.0,
+                       'nr_compartments': 3,
+                       'periph_1': (5.0, 3.0),
+                       'periph_2': (1.0, 4.7),
+                       'periph_3': (6.0, 2.4),
+                       'CL': 0,
+                       'X': 1.6,
+                       'dose_mode': 'normal'
+                       }]
+        expected_model = [{'name': 'test1',
                           'injection_type': 'subcutaneous',
-                          'V_c': 1.0,
-                          'nr_compartments': 1,
-                          'periph_1': (5.0, 3.0),
-                          'CL': 5.0,
-                          'X': 6.0,
-                          'dose_mode': 'normal'
-                          }
-        self.assertEqual(model.parameters, expected_model)
+                           'V_c': 1.0,
+                           'nr_compartments': 1,
+                           'periph_1': (5.0, 3.0),
+                           'CL': 5.0,
+                           'X': 6.0,
+                           'dose_mode': 'normal'
+                           },
+                          {'name': 'test1',
+                          'injection_type': 'intravenous',
+                           'V_c': 1.0,
+                           'nr_compartments': 3,
+                           'periph_1': (5.0, 3.0),
+                           'periph_2': (1.0, 4.7),
+                           'periph_3': (6.0, 2.4),
+                           'CL': 0,
+                           'X': 1.6,
+                           'dose_mode': 'normal'
+                           }]
+        for i in range(0, 1):
+            model = pk.models.Model(parameters[i])
+        self.assertEqual(model.parameters, expected_model[i])
 
     def test_generate_model(self):
         """
