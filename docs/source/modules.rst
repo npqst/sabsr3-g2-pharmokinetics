@@ -1,7 +1,14 @@
-sabsr3-g2-pharmokinetics
-========================
+Docs
+===================================================================
 
-.. toctree::
-   :maxdepth: 4
+.. automodule:: pkmodel
+   :members:
 
-   pkmodel
+=====================================================
+Classes
+=====================================================
+
+
+.. automodule:: pkmodel.solution
+   :members:
+   :inherited-members:
