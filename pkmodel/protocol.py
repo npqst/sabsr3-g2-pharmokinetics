@@ -34,13 +34,18 @@ class Protocol(AbstractProtocol):
             self.fill_parameters(file_dir)
 
     def read_config(self, file_dir):
-        #get current directory and add to file_dir
+        """Reads in config file and converts into python dictionary
+
+        Args:
+            file_dir (string): Relative path for the config file
+
+        Returns:
+            dict: Dictionary of the parameters
+        """
         config_file = open(file_dir, "r")
         config_file_str = config_file.read()
         config_file.close()
-        dictionaries_list_str = config_file_str  # .split(",")
-        # <-- for splitting up multipl dictionaries in the future
-        # dictionaries_list = [json.loads(d) for d in dictionaries_list_str]
+        dictionaries_list_str = config_file_str 
         dictionaries_list = ast.literal_eval(str(dictionaries_list_str))
         return dictionaries_list
 
