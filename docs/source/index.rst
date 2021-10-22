@@ -12,7 +12,6 @@ Welcome to SABS:R3 2021 Group 2 Pharmokinetics Modelling Project's documentation
 
 
    modules
-   pkmodel
 
 
 Indices and tables

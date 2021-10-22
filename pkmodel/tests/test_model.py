@@ -1,5 +1,6 @@
 import unittest
 import pkmodel as pk
+from pkmodel.AbstractModel import AbstractModel
 
 
 class ModelTest(unittest.TestCase):
@@ -78,3 +79,16 @@ class ModelTest(unittest.TestCase):
         for i in range(0, 1):
             test = model.generate_transition(*test_array[i])
             self.assertEqual(test, expected_transition[i])
+
+    def test_abstractmodel(self):
+        with self.assertRaises(TypeError):
+            TestModel()
+
+
+class TestModel(AbstractModel):
+    def ___init___(self):
+        pass
+
+
+if __name__ == '__main__':
+    unittest.main()
