@@ -9,5 +9,6 @@
     'CL': 5.0,
     'X': 6.0,
     'run_mode' : 'test',
-    'dose_mode': 'pulse'
+    'dose_mode': 'pulse',
+    'time': 1
 }
