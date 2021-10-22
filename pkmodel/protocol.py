@@ -55,9 +55,9 @@ class Protocol(AbstractProtocol):
 
     def check_fill_parametersint(self):
         for i in 'nr_compartments', 'time':
-            if not isinstance(self.params['nr_compartments'], int):
+            if not isinstance(self.params[i], int):
                 raise TypeError(f'{i} should be a integer')
-            if self.params['nr_compartments'] < 0:
+            if self.params[i] < 0:
                 raise ValueError(f'{i} should be at least 0')
             if i == 'time':
                 if self.params['time'] > 5.0:
