@@ -1,0 +1,22 @@
+.. SABS:R3 2021 Group 2 Pharmokinetics Modelling Project documentation master file, created by
+   sphinx-quickstart on Thu Oct 21 17:10:27 2021.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to SABS:R3 2021 Group 2 Pharmokinetics Modelling Project's documentation!
+=================================================================================
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+
+Hello World!
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

@@ -17,7 +17,7 @@ def get_version():
     import sys
 
     sys.path.append(os.path.abspath('pkmodel'))
-    from version_info import VERSION as version
+    from pkmodel.version_info import VERSION as version
     sys.path.pop()
 
     return version
