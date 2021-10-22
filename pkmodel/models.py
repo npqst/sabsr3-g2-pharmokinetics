@@ -7,9 +7,9 @@ model subclasses.
 
 import numpy as np
 import scipy.integrate
-from .solution import Solution
-from .AbstractModel import AbstractModel
-from .dose import select_dose
+from pkmodel.solution import Solution
+from pkmodel.AbstractModel import AbstractModel
+from pkmodel.dose import select_dose
 
 
 class Model(AbstractModel):

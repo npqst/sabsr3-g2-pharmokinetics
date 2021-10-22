@@ -1,5 +1,5 @@
 import unittest
-# import pkmodel as pk
+import pkmodel as pk
 
 
 class ModelTest(unittest.TestCase):
@@ -10,5 +10,43 @@ class ModelTest(unittest.TestCase):
         """
         Tests Model creation.
         """
-        # model = pk.Model()
-        self.assertEqual(42, 42)
+        parameters = {'name': 'test1',
+                      'injection_type': 'subcutaneous',
+                      'V_c': 1.0,
+                      'nr_compartments': 1,
+                      'periph_1': (5.0, 3.0),
+                      'CL': 5.0,
+                      'X': 6.0,
+                      'dose_mode': 'normal'
+                      }
+        model = pk.models.Model(parameters)
+        expected_model = {'name': 'test1',
+                          'injection_type': 'subcutaneous',
+                          'V_c': 1.0,
+                          'nr_compartments': 1,
+                          'periph_1': (5.0, 3.0),
+                          'CL': 5.0,
+                          'X': 6.0,
+                          'dose_mode': 'normal'
+                          }
+        self.assertEqual(model.parameters, expected_model)
+
+    def test_generate_model(self):
+        """
+        Tests generate_model for 3 cases
+        """
+        parameters = {'name': 'test1',
+                      'injection_type': 'subcutaneous',
+                      'V_c': 1.0,
+                      'nr_compartments': 1,
+                      'periph_1': (5.0, 3.0),
+                      'CL': 5.0,
+                      'X': 6.0,
+                      'dose_mode': 'normal'
+                      }
+        model = pk.models.Model(parameters)
+        test_array = [[(1, 1), 1, 1], [(0, 0), 0, 0], [(5.2, 3.1), 2, 2.6]]
+        expected_transition = [0, 0, 4.65]
+        for i in range(0, 1):
+            test = model.generate_transition(*test_array[i])
+            self.assertEqual(test, expected_transition[i])
