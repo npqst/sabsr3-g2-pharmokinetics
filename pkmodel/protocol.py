@@ -18,8 +18,8 @@ class Protocol(AbstractProtocol):
         """Initialises Protocol object with default parameters
 
         Args:
-            file_dir (string, optional): Path for config file to update parameters if defined. 
-            Defaults to None.
+            file_dir (string, optional): Path for config file to update
+            parameters if defined. Defaults to None.
         """
         self.params = {
             'name': 'model1',
@@ -48,8 +48,7 @@ class Protocol(AbstractProtocol):
         config_file = open(file_dir, "r")
         config_file_str = config_file.read()
         config_file.close()
-        dictionaries_list_str = config_file_str 
-        dictionaries_list = ast.literal_eval(str(dictionaries_list_str))
+        dictionaries_list = ast.literal_eval(str(config_file_str))
         return dictionaries_list
 
     def check_fill_parametersdict(self):
@@ -85,7 +84,7 @@ class Protocol(AbstractProtocol):
                 raise TypeError(f'{i} should be a integer')
             if self.params[i] < 0:
                 raise ValueError(f'{i} should be at least 0')
-            # Makes sure that time does not get too large as not relevant for 
+            # Makes sure that time does not get too large as not relevant for
             # the model
             if i == 'time':
                 if self.params['time'] > 5:
@@ -93,7 +92,8 @@ class Protocol(AbstractProtocol):
                                      'exceed a value of 5 hours')
 
     def check_fill_parametersperip(self):
-        """Checks that periph_* parameters are a tuple with two floats both larger than 0
+        """Checks that periph_* parameters are a tuple with two
+        floats both larger than 0.
 
         Raises:
             TypeError: If periph_* parameter is not a tuple
@@ -136,8 +136,8 @@ class Protocol(AbstractProtocol):
         self.check_fill_parametersstr()
 
     def fill_parameters(self, file_dir):
-        """Fills the parameters using the config file and updates the default 
-        values based on these values
+        """Fills the parameters using the config file and updates the
+        default values based on these values
 
         Args:
             file_dir (string): Relative path for the config file
@@ -168,7 +168,8 @@ class Protocol(AbstractProtocol):
         """Generates a model object based on the parameters in the Protocol object
 
         Raises:
-            Exception: If an incorrect mode is given (not intravenous nor subcutaneous)
+            Exception: If an incorrect mode is given
+            (not intravenous nor subcutaneous)
 
         Returns:
             Model Obnject: An initiated model using the defined parameters

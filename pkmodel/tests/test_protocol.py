@@ -49,8 +49,8 @@ class ProtocolTest(unittest.TestCase):
             'X': 1.0,
             'dose_mode': 'normal',
             'nr_compartments': 1,
-            'save_mode': 'save',
-            'time': 1.0
+            'run_mode': 'save',
+            'time': 1
         }
         self.assertEqual(filled_params, true_params)
 
