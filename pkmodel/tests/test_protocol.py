@@ -106,7 +106,7 @@ class ProtocolTest(unittest.TestCase):
                     protocol.call_all_checks()
                     self.assertTrue('Time should not exceed \
                         a value of 5 hours' in context.exception)
-                
+
     def test_inputs_strings(self):
         from pkmodel import Protocol
         for i in 'name', 'injection_type':
