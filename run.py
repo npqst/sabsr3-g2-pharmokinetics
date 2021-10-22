@@ -6,8 +6,10 @@ usage: python run.py
 """
 
 import pkmodel as pk
+import sys
 
-protocol = pk.Protocol('pkmodel/config_file.txt')
+arg = sys.argv
+protocol = pk.Protocol(arg[1])
 model = protocol.generate_model()
 x = model.solve()
 
