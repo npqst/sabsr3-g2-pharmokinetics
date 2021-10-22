@@ -59,11 +59,11 @@ class ProtocolTest(unittest.TestCase):
         Tests exceptions for bad inputs for CL, X and Time
         """
         from pkmodel import Protocol
-        protocol = Protocol()
         for i in 'CL', 'X':
             error_dict = {-1: f'{i} should be at least 0',
                           'test': f'{i} should be a float'}
             for j in -1, 'test':
+                protocol = Protocol()
                 protocol.params[i] = j
                 with self.assertRaises(Exception) as context:
                     protocol.call_all_checks()
