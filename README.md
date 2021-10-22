@@ -74,15 +74,25 @@ Attempt | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 | #10 | #11
 Seconds | 301 | 283 | 290 | 286 | 289 | 285 | 287 | 287 | 272 | 276 | 269
 
 ** Parameters ** | ** Description **
+--- | ---
 *name* | name of model; output files will be saved under this name
+--- | ---
 *injection_type* | intravenous bolus or subcutaneous (as described above)
+--- | ---
 *V_c* | volume of the central compartment (mL)
+--- | ---
 *nr_compartments* | the number of peripheral compartments
+--- | ---
 *periph_1* | (volume in the peripheral compartment (mL), transition rate between the central and peripheral compartment 1 (mL/h))
+--- | ---
 *CL* | the clearance rate from the central compartment (mL/h)
+--- | ---
 *X* | mass of drug administered at each dose (ng)
+--- | ---
 *run_mode* | option to switch between 'save', which saves the plot, solution, and parameter output files, and 'test', which simply displays the plot of the solution
+--- | ---
 *dose_mode* | the dose function, which can be chosed from 'normal', which is a single dose, and 'pulse', which initiates a series of pulse doses
+--- | ---
 *time* | time period in which dosing is observed (hours - maximum 5)
 
 
