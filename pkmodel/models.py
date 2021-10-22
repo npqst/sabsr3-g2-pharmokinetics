@@ -32,7 +32,7 @@ class Model(AbstractModel):
         self.CL = parameters['CL']
         self.V_c = parameters['V_c']
         self.X = parameters['X']
-        self.dose = select_dose(parameters['dose'])
+        self.dose = select_dose(parameters['dose_mode'])
         self.base_compartments = 0
 
     def generate_transition(self, parameter_tuple, q_central, q_peripheral):
