@@ -17,6 +17,23 @@ class Protocol(AbstractProtocol):
     def __init__(self, file_dir=None):
         """Initialises Protocol object with default parameters
 
+        The parameters are:
+        name = name of model - output files will be saved under this name
+        injection_type = intravenous bolus or subcutaneous (as described above)
+        V_c = volume of the central compartment (mL)
+        nr_compartments = the number of peripheral compartments
+        periph_1 = (volume in the peripheral compartment (mL), transition rate
+        between the central and peripheral compartment 1 (mL/h))
+        CL = the clearance rate from the central compartment (mL/h)
+        X = mass of drug administered at each dose
+        run_mode = option to switch between ‘save’, which saves the plot,
+        solution, and parameter output files, and ‘test’, which simply
+        displays the plot of the solution
+        dose_mode = the dose function, which can be chosed from ‘normal’,
+        which is a single dose, and ‘pulse’, which initiates a series of pulse
+        doses
+        time = time period in which dosing is observed (hours - maximum 5)
+
         Args:
             file_dir (string, optional): Path for config file to update
             parameters if defined. Defaults to None.
