@@ -52,7 +52,7 @@ class ModelTest(unittest.TestCase):
                            }]
         for i in range(0, 1):
             model = pk.models.Model(parameters[i])
-        self.assertEqual(model.parameters, expected_model[i])
+            self.assertEqual(model.parameters, expected_model[i])
 
     def test_generate_model(self):
         """
