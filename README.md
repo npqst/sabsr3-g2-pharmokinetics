@@ -1,5 +1,6 @@
 [![codecov](https://codecov.io/gh/npqst/sabsr3-g2-pharmokinetics/branch/master/graph/badge.svg?token=SBIT61YATN)](https://codecov.io/gh/npqst/sabsr3-g2-pharmokinetics)
-[![Run unit tests](https://github.com/npqst/sabsr3-g2-pharmokinetics/actions/workflows/python-package.yml/badge.svg)](https://github.com/npqst/sabsr3-g2-pharmokinetics/actions/workflows/python-package.yml)
+[![Run unit tests](https://github.com/npqst/sabsr3-g2-pharmokinetics/actions/workflows/workflow_with_lint.yml/badge.svg)](https://github.com/npqst/sabsr3-g2-pharmokinetics/actions/workflows/workflow_with_lint.yml)
+[![Documentation Status](https://readthedocs.org/projects/sabsr3-g2-pharmokinetics/badge/?version=latest)](https://sabsr3-g2-pharmokinetics.readthedocs.io/en/latest/?badge=latest)
 
 # Compartmental Pharmacokinetic Model
 
