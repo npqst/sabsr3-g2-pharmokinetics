@@ -44,21 +44,6 @@ class Protocol(AbstractProtocol):
         dictionaries_list = ast.literal_eval(str(dictionaries_list_str))
         return dictionaries_list
 
-    def fill_parameters(self, file_dir):
-        param_dicts = self.read_config(file_dir)
-        for k in self.params.keys():
-            if k not in param_dicts:
-                param_dicts[k] = self.params[k]
-
-        for i in range(1, param_dicts['nr_compartments'] + 1):
-            key = f'periph_{i}'
-            if key not in param_dicts:
-                param_dicts[key] = self.params['periph_default']
-        if (param_dicts['injection_type'] == 'subcutaneous'
-                and 'k_a' not in param_dicts.keys()):
-            param_dicts['k_a'] = 1.0
-        self.params = param_dicts
-
     def check_fill_parametersdict(self):
         if not isinstance(self.params, dict):
             raise TypeError('data input should be a dictionary')
@@ -79,22 +64,30 @@ class Protocol(AbstractProtocol):
             raise TypeError('periph_1 should be a tuple')
 
         for i in range(0, 1):
-            if not isinstance(self.params['periph_1'][i], int):
-                raise TypeError('values associated with the peripheral'
-                                ' compartment should be integer')
-            if self.params['periph_1'][i] < 0:
-                raise ValueError('values associated with the peripheral'
-                                 ' compartment should be positive')
+            for n in len(self.params['nr_compartments']):
+                if not isinstance(self.params[f'periph_{n}'][i], int):
+                    raise TypeError(f'values associated with the peripheral'
+                                    ' compartment should be integer')
+                if self.params[f'periph_{n}'][i] < 0:
+                    raise ValueError('values associated with the peripheral'
+                                    f' compartment {n} should be positive')
 
     def check_fill_parametersCLXtime(self):
         for i in 'Cl', 'X', 'time':
             if not isinstance(self.params[i], float):
                 raise TypeError(f'{i} should be a float')
             if self.params[i] < 0:
-                raise ValueError(f'{i}' should be at least 0')
+                raise ValueError(f'{i} should be at least 0')
             if i == time:
                 if time > 5:
                     raise ValueError('Time should not exceed a value of 5 hours')
+    
+    def call_all_checks(self):
+        self.check_fill_parametersdict()
+        self.check_fill_parameterscompartments()
+        self.check_fill_parametersperip()
+        self.check_fill_parametersCLXtime()
+    
 
     def generate_model(self):
         if self.params['injection_type'] == 'intravenous':
@@ -105,8 +98,17 @@ class Protocol(AbstractProtocol):
             raise Exception(
                 'model type should be either intravenous or subcutaneous')
     
-    def call_all_checks(self):
-        self.check_fill_parametersdict()
-        self.check_fill_parameterscompartments()
-        self.check_fill_parametersperip()
-        self.check_fill_parametersCLXtime(
+    def fill_parameters(self, file_dir):
+        param_dicts = self.read_config(file_dir)
+        for k in self.params.keys():
+            if k not in param_dicts:
+                param_dicts[k] = self.params[k]
+
+        for i in range(1, param_dicts['nr_compartments'] + 1):
+            key = f'periph_{i}'
+            if key not in param_dicts:
+                param_dicts[key] = self.params['periph_default']
+        if (param_dicts['injection_type'] == 'subcutaneous'
+                and 'k_a' not in param_dicts.keys()):
+            param_dicts['k_a'] = 1.0
+        self.params = param_dicts
