@@ -35,7 +35,7 @@ def get_readme():
 # Go!
 setup(
     # Module name (lowercase)
-    name='pkmodel',
+    name='pkmodel-npqst',
 
     # Version
     version=get_version(),
@@ -43,6 +43,8 @@ setup(
     description='An example Python project.',
 
     long_description=get_readme(),
+
+    long_description_content_type="text/markdown",
 
     license='MIT license',
 
@@ -65,6 +67,7 @@ setup(
         'numpy',
         'matplotlib',
         'scipy',
+        'pandas',
     ],
     extras_require={
         'docs': [
@@ -78,4 +81,5 @@ setup(
             'flake8>=3',
         ],
     },
+
 )
