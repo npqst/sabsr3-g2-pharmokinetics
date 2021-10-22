@@ -69,7 +69,8 @@ class ModelTest(unittest.TestCase):
                       'periph_1': (5.0, 3.0),
                       'CL': 5.0,
                       'X': 6.0,
-                      'dose_mode': 'normal'
+                      'dose_mode': 'normal',
+                      'time': 1
                       }
         model = pk.models.Model(parameters)
         test_array = [[(1, 1), 1, 1], [(0, 0), 0, 0], [(5.2, 3.1), 2, 2.6]]
