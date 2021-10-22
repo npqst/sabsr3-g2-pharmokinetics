@@ -1,8 +1,6 @@
 """
 AbstractSolution.py: Abstract class for solution of 1st Order Linear ODE
 for pharmokinetic model
-Authors: SABS R3 Group 2
-20.10.2021
 """
 from abc import ABC, abstractmethod
 
