@@ -14,11 +14,11 @@ A pharmakinetic model provides a quantitative basis for describing the delivery 
 
 ## Usage
 
-1. Parameter inputs should be defined in the a text file in the style of a Python dictionary. An example is provided in config_file.txt.
-2. Run this following command from within the root directory
+1. Parameter inputs should be defined in a text file in the style of a Python dictionary. An example is provided in config_file.txt.
+2. Run the following command from within the root directory
     `python3 run.py <relative directory of config_file>`
 3. The graphs of the amounts plotted over time, parameters and raw data are saved in the `./output/` directory   
-    - If saving files from multiple runs, ensure 'name' in the config file is changed each time to prevent overwriting previous outputs
+    - If saving files from multiple runs, ensure 'name' in the config file is changed each time to prevent overwriting previous outputs.
 
 ## How the model works 
 
@@ -28,7 +28,7 @@ The PK model will allow the following processes to be defined:
 3. Metabolism
 4. Excretion
 
-These processes in this model are described as first order rate reactions with the drug being administred to a central compartment from which there are "n" number of compartments. 
+These processes in this model are described as first order rate reactions with the drug being administred to a central compartment from which there are "nr" number of peripheral compartments. 
 
 The drug can be administered by two mechanisms in the model, which should be defined when running the model.
 1. Intravenous bolus - the drug is adminsitered directly into the central compartment 
