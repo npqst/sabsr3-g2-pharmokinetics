@@ -1,0 +1,11 @@
+{
+    'name': 'model_example',
+    'injection_type': 'subcutaneous',
+    'V_c': 2.0,
+    'nr_compartments':1,
+    'periph_1': (5.0, 1.0),
+    'CL': 1.0,
+    'X': 1.0,
+    'run_mode' : 'save',
+    'dose_mode': 'pulse'
+}
