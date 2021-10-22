@@ -6,7 +6,6 @@ mccabe==0.6.1
 numpy==1.21.2
 pandas==1.3.4
 Pillow==8.4.0
--e git+https://github.com/npqst/sabsr3-g2-pharmokinetics.git@e60c4ca99db424637151208993132234f37fcc3c#egg=pkmodel
 pycodestyle==2.8.0
 pyflakes==2.4.0
 pyparsing==2.4.7
