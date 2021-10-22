@@ -34,7 +34,7 @@ class Model(AbstractModel):
         self.X = parameters['X']
         self.dose = select_dose(parameters['dose_mode'])
         self.base_compartments = 0
-        self.time = parameters['Time']
+        self.time = parameters['time']
 
     def generate_transition(self, parameter_tuple, q_central, q_peripheral):
         """Helper function computes single transition equation
