@@ -13,11 +13,11 @@ A pharmakinetic model provides a quantitative basis for describing the delivery 
 ![Screenshot 2021-10-22 at 15 36 26](https://user-images.githubusercontent.com/77674238/138473168-71fa2dae-bf8b-427c-bc7a-641ccd9592df.png)
 
 ## Usage
-
-1. Parameter inputs should be defined in a text file in the style of a Python dictionary. An example is provided in config_file.txt.
-2. Run the following command from within the root directory
+1. See the installation guide below
+2. Parameter inputs should be defined in a text file in the style of a Python dictionary. An example is provided in config_file.txt.
+3. Run the following command from within the root directory
     `python3 run.py <relative directory of config_file>`
-3. The graphs of the amounts plotted over time, parameters and raw data are saved in the `./output/` directory   
+4. The graphs of the amounts plotted over time, parameters and raw data are saved in the `./output/` directory   
     - If saving files from multiple runs, ensure 'name' in the config file is changed each time to prevent overwriting previous outputs.
 
 ## How the model works 
@@ -83,7 +83,17 @@ The parameters for these differential equations should be defined in order to al
 
 ## Installation
 
-Insert installation instructions here when package is set up
+To install the pip package: 
+```
+pip install matplotlib scipy pandas
+pip install -i https://test.pypi.org/simple/ pkmodel-npqst
+```
+
+To install from github: 
+```
+git clone https://github.com/npqst/sabsr3-g2-pharmokinetics.git
+pip install -r requirements.txt
+```
 
 
 
