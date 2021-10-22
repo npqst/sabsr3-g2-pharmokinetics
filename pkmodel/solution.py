@@ -31,13 +31,16 @@ class Solution(AbstractSolution):
 
     @property
     def get_solution(self):
-        """Return solution vector
+        """Return list of y and t arrays from solution vector
 
-        :return: x * t matrix where x is number of compartments and t is
-        length of time vector
-        :rtype: array of float
+        :return: list of y, t --> where y = np.array of quantities and
+        <-- t = np.array of time
+        :rtype: list of numpy arrays
         """
-        return self.__solution_vector
+        vector = self.__solution_vector
+        y = vector.y
+        t = vector.t
+        return [y, t]
 
     @property
     def get_parameters(self):
@@ -54,15 +57,15 @@ class Solution(AbstractSolution):
         :return: plots of quantity vs time for each compartment
         :type: matplotlib plot
         """
-        vector = self.get_solution
+        array_list = self.get_solution
         #generate figure
         f = plt.figure()
 
-        t = vector.t
+        t = array_list[1]
 
-        for i in range(vector.y.shape[0]):
+        for i in range(array_list[0].shape[0]):
             #iterate over each compartment and sequentially plot
-            y = vector.y[i, :]
+            y = array_list[0][i, :]
             if i == 0:
                 plt.plot(t, y, figure=f, label='central compartment')
             else:
@@ -91,7 +94,7 @@ class Solution(AbstractSolution):
         :return: nill
         """
         self.generate_plot()
-        plt.savefig('{0}Model{1}_plot.png'.format(dir_path, model_no))
+        plt.savefig('{0}{1}_plot.png'.format(dir_path, model_no))
 
     def save_parameters(self, dir_path, model_no):
         """ saves input parameters in text file
@@ -101,8 +104,8 @@ class Solution(AbstractSolution):
         param_dict = self.get_parameters
         del param_dict['dose']
 
-        with open('{0}Model{1}_params.txt'.format(dir_path,
-                                                  model_no), 'w') as file:
+        with open('{0}{1}_params.txt'.format(dir_path,
+                                             model_no), 'w') as file:
             file.write(json.dumps(param_dict))
 
     def save_solution(self, dir_path, model_no):
@@ -111,13 +114,13 @@ class Solution(AbstractSolution):
         :return: nill
         """
         solution = self.get_solution
-        df_t = pd.DataFrame(solution.t)
+        df_t = pd.DataFrame(solution[1])
         df_t = df_t.rename(columns={0: 'Time'})
-        df_y = pd.DataFrame(solution.y).T
+        df_y = pd.DataFrame(solution[0]).T
         df = pd.merge(df_t, df_y, left_index=True, right_index=True)
 
-        df.to_csv('{0}Model{1}_solution.csv'.format(dir_path,
-                                                    model_no), index=True)
+        df.to_csv('{0}{1}_solution.csv'.format(dir_path,
+                                               model_no), index=True)
 
     def output(self):
         """ creates and populates output directory
@@ -132,9 +135,9 @@ class Solution(AbstractSolution):
             dir_path = './Output/'
             if not os.path.isdir(dir_path):
                 os.mkdir(dir_path)
-            self.save_plot(dir_path, str(1))
-            self.save_parameters(dir_path, str(1))
-            self.save_solution(dir_path, str(1))
+            self.save_plot(dir_path, parameter_dict['name'])
+            self.save_parameters(dir_path, parameter_dict['name'])
+            self.save_solution(dir_path, parameter_dict['name'])
         elif parameter_dict['run_mode'] == 'test':
             #run mode test = show plot without save
             self.show_plot()

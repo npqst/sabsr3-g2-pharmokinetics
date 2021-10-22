@@ -1,0 +1,15 @@
+{
+    'name': 'solutions_unittest',
+    'injection_type': 'subcutaneous',
+    'V_c': 2.0,
+    'nr_compartments':2,
+    'periph_1': (5.0, 3.0),
+    'periph_2': (3.0, 1.0),
+    'periph_3': (1.0, 1.0),
+    'CL': 5.0,
+    'X': 6.0,
+    'run_mode' : 'save',
+    'dose_mode': 'normal'    
+}
+
+
