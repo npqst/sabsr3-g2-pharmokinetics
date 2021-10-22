@@ -95,7 +95,7 @@ class ProtocolTest(unittest.TestCase):
                 "string": f'{i} should be a integer'
             }
             for j in -1, 3.0, "string":
-                protocol.params['nr_compartments'] = j
+                protocol.params[i] = j
                 with self.assertRaises(Exception) as context:
                     protocol.call_all_checks()
                     self.assertTrue(error_dict[j] in context.exception)
