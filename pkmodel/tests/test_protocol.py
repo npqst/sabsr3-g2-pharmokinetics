@@ -66,7 +66,7 @@ class ProtocolTest(unittest.TestCase):
             for j in -1, 'test':
                 protocol.params[i] = j
                 with self.assertRaises(Exception) as context:
-                    protocol.fill_parameters({})
+                    protocol.call_all_checks()
                     self.assertTrue(error_dict[j] in context.exception)
 
     def test_inputs_periph(self):
@@ -82,7 +82,7 @@ class ProtocolTest(unittest.TestCase):
         for j in "test", (-1.0, 0.0), ("test", "test2"):
             protocol.params['periph_1'] = j
             with self.assertRaises(Exception) as context:
-                protocol.fill_parameters({})
+                protocol.call_all_checks()
                 self.assertTrue(error_dict[j] in context.exception)
 
     def test_inputs_int(self):
@@ -97,7 +97,7 @@ class ProtocolTest(unittest.TestCase):
             for j in -1, 3.0, "string":
                 protocol.params['nr_compartments'] = j
                 with self.assertRaises(Exception) as context:
-                    protocol.fill_parameters({})
+                    protocol.call_all_checks()
                     self.assertTrue(error_dict[j] in context.exception)
 
     def test_inputs_strings(self):
@@ -106,14 +106,15 @@ class ProtocolTest(unittest.TestCase):
         for i in 'name', 'injection_type':
             protocol.params[i] = 3.0
             with self.assertRaises(Exception) as context:
-                protocol.fill_parameters({})
+                protocol.call_all_checks()
                 self.assertTrue(f'{i} should be a string' in context.exception)
 
     def test_input_dict(self):
         from pkmodel import Protocol
         protocol = Protocol()
         with self.assertRaises(Exception) as context:
-            protocol.fill_parameters("string")
+            protocol.params = "string"
+            protocol.call_all_checks()
             self.assertTrue('data input should \
                 be a dictionary' in context.exception)
 
