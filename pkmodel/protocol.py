@@ -60,7 +60,7 @@ class Protocol(AbstractProtocol):
             if self.params[i] < 0:
                 raise ValueError(f'{i} should be at least 0')
             if i == 'time':
-                if self.params['time'] > 5.0:
+                if self.params['time'] > 5:
                     raise ValueError('Time should not '
                                      'exceed a value of 5 hours')
 
