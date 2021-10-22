@@ -36,7 +36,8 @@ The drug can be administered by two mechanisms in the model, which should be def
 
 2. Subcutaneous - the drug is administered into a peripheral compartment which diffuses into the central compartment.
     - It is described in these differential equations:
-    - Insert Image
+    - ![Screenshot 2021-10-22 at 15 26 22](https://user-images.githubusercontent.com/77674238/138471461-607f5336-92e0-4546-96aa-3a2354f6494c.png)
+
 
 The parameters for these differential equations should be defined in order to allow the model to solve for the amount of drug in each compartment for each time point. An example set of parameters is given below:
 
