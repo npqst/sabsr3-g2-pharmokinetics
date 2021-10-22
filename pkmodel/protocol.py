@@ -90,6 +90,7 @@ class Protocol(AbstractProtocol):
         self.check_fill_parametersint()
         self.check_fill_parametersperip()
         self.check_fill_parametersCLX()
+        self.check_fill_parametersstr()
 
     def fill_parameters(self, file_dir):
         param_dicts = self.read_config(file_dir)
