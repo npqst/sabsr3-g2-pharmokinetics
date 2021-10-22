@@ -44,6 +44,7 @@ class ProtocolTest(unittest.TestCase):
             'injection_type': 'intravenous',
             'V_c': 2.0,
             'periph_default': (1.0, 1.0),      # (V_p1, Q_p1)
+            'periph_1': (1.0, 1.0),
             'CL': 1.0,
             'X': 1.0,
             'dose': 'normal',
