@@ -2,6 +2,8 @@
 [![Run unit tests](https://github.com/npqst/sabsr3-g2-pharmokinetics/actions/workflows/workflow_with_lint.yml/badge.svg)](https://github.com/npqst/sabsr3-g2-pharmokinetics/actions/workflows/workflow_with_lint.yml)
 [![Documentation Status](https://readthedocs.org/projects/sabsr3-g2-pharmokinetics/badge/?version=latest)](https://sabsr3-g2-pharmokinetics.readthedocs.io/en/latest/?badge=latest)
 
+Review documentation here: https://sabsr3-g2-pharmokinetics.readthedocs.io/en/latest/
+
 # Compartmental Pharmacokinetic Model
 
 This is the compartmental pharmacokinetic (PK) model developed by Group 2 for the SABS Software Development module. 
@@ -13,7 +15,8 @@ A pharmakinetic model provides a quantitative basis for describing the delivery 
 1. Parameter inputs should be defined in the a text file in the style of a Python dictionary. An example is provided in config_file.txt.
 2. Run this following command from within the root directory
     `python3 run.py <relative directory of config_file>`
-3. The graphs of the amounts plotted over time, parameters and raw data are saved in the `./output/` directory
+3. The graphs of the amounts plotted over time, parameters and raw data are saved in the `./output/` directory   
+    - If saving files from multiple runs, ensure 'name' in the config file is changed each time to prevent overwriting previous outputs
 
 ## How the model works 
 
