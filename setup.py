@@ -50,11 +50,11 @@ setup(
 
     # author_email='',
 
-    maintainer='Martin Robinson',
+    maintainer='Katherine Shepherd, Guy Durant, Dylan Adlard, Nele Quast',
 
-    maintainer_email='martin.robinson@cs.ox.ac.uk',
+    maintainer_email='first.last@dtc.ox.ac.uk',
 
-    url='https://github.com/SABS-R3/2020-software-engineering-projects-pk',
+    url='https://github.com/npqst/sabsr3-g2-pharmokinetics',
 
     # Packages to include
     packages=find_packages(include=('pkmodel', 'pkmodel.*')),
